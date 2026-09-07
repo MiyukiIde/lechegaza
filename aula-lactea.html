@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula Láctea — Leche Gaza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F3EA;
+    --cream-dim:#EFE9DC;
+    --green:#2C4A3B;
+    --green-deep:#1B322A;
+    --gold:#C9A227;
+    --ink:#20201B;
+    --line: rgba(32,32,27,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,243,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{display:flex; align-items:center; text-decoration:none;}
+  .brand img{height:34px; width:auto; display:block;}
+  .navlinks{display:flex; gap:32px; font-size:14.5px;}
+  .navlinks a{text-decoration:none; color:var(--ink); opacity:0.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;}
+  .navlinks a.active{opacity:1; color:var(--green); font-weight:500;}
+  .navcta{
+    background:var(--green); color:var(--cream);
+    padding:10px 20px; border-radius:3px;
+    font-size:14px; text-decoration:none; font-weight:500;
+  }
+
+  /* Page hero */
+  .page-hero{
+    padding:72px 0 56px;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:end;
+  }
+  .hero-eyebrow{font-size:15px; color:var(--green); font-weight:500; margin-bottom:18px;}
+  .page-hero h1{font-size:clamp(34px, 4.5vw, 54px); line-height:1.05; max-width:14ch;}
+  .page-hero p{margin-top:22px; font-size:17px; max-width:48ch; color:rgba(32,32,27,0.78);}
+  .hero-actions{margin-top:32px; display:flex; gap:14px; align-items:center; flex-wrap:wrap;}
+  .btn-primary{background:var(--ink); color:var(--cream); padding:14px 26px; border-radius:3px; text-decoration:none; font-size:15px; font-weight:500;}
+  .btn-ghost{text-decoration:none; color:var(--ink); font-size:15px; border-bottom:1px solid var(--ink); padding-bottom:2px;}
+  .hero-art{
+    aspect-ratio:4/5; border-radius:4px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(circle at 70% 15%, rgba(201,162,39,0.3), transparent 55%),
+      linear-gradient(160deg, var(--gold) 0%, var(--green) 65%, var(--green-deep) 100%);
+  }
+  .hero-art::before{
+    content:""; position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(247,243,234,0.06) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(90deg, rgba(247,243,234,0.06) 0 1px, transparent 1px 40px);
+  }
+  .hero-art-label{position:absolute; left:24px; bottom:24px; color:var(--cream); font-family:'Fraunces',serif; font-size:15px;}
+  .hero-art-label small{display:block; opacity:0.7; font-family:'Inter',sans-serif; font-size:12.5px; margin-top:4px;}
+
+  /* Section titles */
+  .section{padding:88px 0;}
+  .section-head{margin-bottom:44px;}
+  .section-head .cat-label{
+    font-size:13px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--green); font-weight:600; margin-bottom:14px;
+  }
+  .section-head h2{font-size:clamp(26px,3vw,36px); max-width:20ch;}
+  .section-head p{max-width:52ch; font-size:15.5px; color:rgba(32,32,27,0.7); margin:10px 0 0;}
+
+  /* Journey steps */
+  .journey{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .step{background:var(--cream); padding:32px 26px; display:flex; flex-direction:column; gap:12px;}
+  .step-num{
+    font-family:'Fraunces',serif; font-size:15px; color:var(--gold);
+    width:34px; height:34px; border-radius:50%; border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step h3{font-size:18px;}
+  .step p{margin:0; font-size:14px; color:rgba(32,32,27,0.7);}
+
+  /* Two-column audience cards */
+  .audience{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  .audience-card{background:var(--cream); padding:40px 36px; display:flex; flex-direction:column; gap:18px;}
+  .audience-card h3{font-size:22px;}
+  .audience-card p{margin:0; font-size:15px; color:rgba(32,32,27,0.72);}
+  .audience-card ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px;}
+  .audience-card li{
+    font-size:14.5px; color:rgba(32,32,27,0.8);
+    padding-left:20px; position:relative;
+  }
+  .audience-card li::before{
+    content:""; position:absolute; left:0; top:8px;
+    width:6px; height:6px; border-radius:50%; background:var(--green);
+  }
+  .audience-card .btn-ghost{align-self:flex-start; margin-top:6px;}
+
+  /* Stat strip */
+  .stats{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--cream-dim);}
+  .stats .wrap{display:grid; grid-template-columns:repeat(3,1fr); padding:36px 32px;}
+  .stat{padding:0 24px; border-left:1px solid var(--line);}
+  .stat:first-child{border-left:none; padding-left:0;}
+  .stat b{font-family:'Fraunces',serif; font-size:32px; font-weight:500; display:block; color:var(--green);}
+  .stat span{font-size:13.5px; color:rgba(32,32,27,0.7);}
+
+  /* CTA */
+  .cta{
+    background:var(--green-deep); color:var(--cream);
+    text-align:center; padding:88px 0;
+  }
+  .cta h2{color:var(--cream); font-size:clamp(26px,3vw,36px); max-width:24ch; margin:0 auto;}
+  .cta p{color:rgba(247,243,234,0.72); max-width:46ch; margin:18px auto 0; font-size:15.5px;}
+  .cta .hero-actions{justify-content:center; margin-top:30px;}
+  .cta .btn-primary{background:var(--gold); color:var(--green-deep);}
+  .cta .btn-ghost{color:var(--cream); border-bottom-color:var(--cream);}
+
+  /* Footer */
+  footer{background:var(--ink); color:var(--cream); padding:64px 0 32px;}
+  .foot-top{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; padding-bottom:48px; border-bottom:1px solid rgba(247,243,234,0.15);}
+  .foot-top h4{font-size:13px; text-transform:none; color:var(--gold); margin-bottom:16px; font-weight:500;}
+  .foot-top a{display:block; text-decoration:none; color:rgba(247,243,234,0.75); font-size:14.5px; margin-bottom:10px;}
+  .foot-bottom{display:flex; justify-content:space-between; padding-top:24px; font-size:13px; color:rgba(247,243,234,0.5);}
+
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .page-hero{grid-template-columns:1fr;}
+    .journey{grid-template-columns:1fr 1fr;}
+    .audience{grid-template-columns:1fr;}
+    .stats .wrap{grid-template-columns:1fr; row-gap:24px;}
+    .stat{border-left:none; padding-left:0;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Gaza"></a>
+    <nav class="navlinks">
+      <a href="index.html#conoce">Conoce Gaza</a>
+      <a href="index.html#ganaderos">Nuestros Ganaderos</a>
+      <a href="productos.html">Productos</a>
+      <a href="aula-lactea.html" class="active">Aula Láctea</a>
+      <a href="index.html#calidad">Calidad</a>
+    </nav>
+    <a class="navcta" href="#contacto">Tienda online</a>
+  </div>
+</header>
+
+<section class="page-hero wrap">
+  <div>
+    <div class="hero-eyebrow">Educación y familia</div>
+    <h1>Aula Láctea: la leche, explicada desde la granja.</h1>
+    <p>Un programa educativo de Gaza para acercar a niños, familias y escuelas el origen de la leche: cómo viven nuestras ganaderías, cómo se cuida a las vacas y cómo llega la leche hasta su mesa.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#escuelas">Solicitar visita para tu cole</a>
+      <a class="btn-ghost" href="#viaje">Descubre el viaje de la leche</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="hero-art-label">Aula Láctea
+      <small>Visitas y material didáctico</small>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>+150</b><span>coles visitados cada curso</span></div>
+    <div class="stat"><b>+6.000</b><span>niños y niñas participantes</span></div>
+    <div class="stat"><b>6-12</b><span>años, edad recomendada</span></div>
+  </div>
+</div>
+
+<section class="section wrap" id="viaje">
+  <div class="section-head">
+    <div class="cat-label">El viaje de la leche</div>
+    <h2>De la dehesa de Zamora a tu vaso</h2>
+    <p>Cuatro pasos sencillos para entender de dónde viene la leche que bebemos cada día.</p>
+  </div>
+  <div class="journey">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>La granja</h3>
+      <p>Nuestras vacas pastan y descansan en las ganaderías de Zamora, cuidadas cada día por sus ganaderos.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>El ordeño</h3>
+      <p>La leche se recoge en condiciones de máxima higiene, dos veces al día, respetando el bienestar animal.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>La fábrica</h3>
+      <p>La leche se enfría, analiza y envasa el mismo día, conservando todas sus propiedades.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Tu mesa</h3>
+      <p>En menos de 48 horas, la leche llega a las tiendas lista para disfrutarse en casa.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="escuelas">
+  <div class="section-head">
+    <div class="cat-label">Para todos los públicos</div>
+    <h2>Actividades pensadas para cada edad</h2>
+    <p>Aula Láctea ofrece dos formas de participar: visitas y materiales para centros escolares, y recursos para disfrutar en familia.</p>
+  </div>
+  <div class="audience">
+    <div class="audience-card">
+      <h3>Para escuelas</h3>
+      <p>Organizamos visitas guiadas a nuestras ganaderías y talleres en el aula adaptados a cada ciclo educativo.</p>
+      <ul>
+        <li>Visitas guiadas a granjas colaboradoras</li>
+        <li>Fichas didácticas para Infantil y Primaria</li>
+        <li>Taller "De la vaca al vaso" en el propio centro</li>
+        <li>Material de apoyo para el profesorado</li>
+      </ul>
+      <a class="btn-ghost" href="mailto:aulalactea@gaza.es">Solicitar una visita</a>
+    </div>
+    <div class="audience-card">
+      <h3>Para familias</h3>
+      <p>Contenidos pensados para aprender jugando en casa, sobre nutrición, ganadería y el trabajo en el campo.</p>
+      <ul>
+        <li>Cuadernillo de juegos y curiosidades descargable</li>
+        <li>Vídeos cortos sobre la vida en la granja</li>
+        <li>Guía de nutrición infantil con la leche Gaza</li>
+        <li>Preguntas frecuentes de los más pequeños</li>
+      </ul>
+      <a class="btn-ghost" href="mailto:aulalactea@gaza.es">Recibir el cuadernillo</a>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>¿Tu cole quiere conocer una ganadería de verdad?</h2>
+    <p>Escríbenos y te contamos cómo organizar una visita a una de nuestras más de 80 ganaderías en Zamora.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="mailto:aulalactea@gaza.es">aulalactea@gaza.es</a>
+      <a class="btn-ghost" href="tel:+34980534620">+34 980 534 620</a>
+    </div>
+  </div>
+</div>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h4>Gaza</h4>
+        <p style="color:rgba(247,243,234,0.6); font-size:14px; max-width:32ch;">Leche de Castilla y León, producida por ganaderos de Zamora desde 1974.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <a href="index.html#ganaderos">Nuestros ganaderos</a>
+        <a href="productos.html">Productos</a>
+        <a href="aula-lactea.html">Aula Láctea</a>
+        <a href="index.html#calidad">Calidad Gaza</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:+34980534620">+34 980 534 620</a>
+        <a href="mailto:info@gaza.es">info@gaza.es</a>
+        <a href="#">Calle de Almaráz 1, Zamora</a>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#">Comprar online</a>
+        <a href="#">Condiciones de compra</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Leche Gaza</span>
+      <span>Aviso legal y privacidad</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
