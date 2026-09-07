@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 130" role="img" aria-label="Gaza">
+  <defs>
+    <linearGradient id="swoosh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9FCB5A"/>
+      <stop offset="1" stop-color="#7FBE4A"/>
+    </linearGradient>
+  </defs>
+  <text x="4" y="78" font-family="'Baloo 2','Poppins','Arial Rounded MT Bold',sans-serif"
+        font-size="76" font-weight="800" fill="#2A3272" letter-spacing="-2">gaza</text>
+  <path d="M172 46 C 180 30, 196 30, 198 44 C 199 52, 190 56, 182 52 C 176 49, 173 48, 172 46 Z"
+        fill="#D9251C"/>
+  <path d="M18 96 C 70 118, 150 118, 232 90 C 220 108, 180 122, 128 122 C 78 122, 36 110, 18 96 Z"
+        fill="url(#swoosh)"/>
+</svg>

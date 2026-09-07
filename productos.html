@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productos — Leche Gaza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F3EA;
+    --cream-dim:#EFE9DC;
+    --green:#2C4A3B;
+    --green-deep:#1B322A;
+    --gold:#C9A227;
+    --ink:#20201B;
+    --line: rgba(32,32,27,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,243,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    display:flex; align-items:center;
+    text-decoration:none;
+  }
+  .brand img{height:34px; width:auto; display:block;}
+  .navlinks{
+    display:flex; gap:32px; font-size:14.5px;
+  }
+  .navlinks a{text-decoration:none; color:var(--ink); opacity:0.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;}
+  .navlinks a.active{opacity:1; color:var(--green); font-weight:500;}
+  .navcta{
+    background:var(--green); color:var(--cream);
+    padding:10px 20px; border-radius:3px;
+    font-size:14px; text-decoration:none;
+    font-weight:500;
+  }
+
+  /* Page hero */
+  .page-hero{
+    padding:72px 0 56px;
+  }
+  .hero-eyebrow{
+    font-size:15px; color:var(--green); font-weight:500; margin-bottom:18px;
+  }
+  .page-hero h1{
+    font-size:clamp(34px, 4.5vw, 54px);
+    line-height:1.05;
+    max-width:16ch;
+  }
+  .page-hero p{
+    margin-top:22px;
+    font-size:17px;
+    max-width:56ch;
+    color:rgba(32,32,27,0.78);
+  }
+
+  /* Section titles */
+  .section{padding:32px 0 96px;}
+  .section-head{
+    margin-bottom:40px;
+  }
+  .section-head h2{font-size:clamp(24px,2.6vw,32px);}
+  .section-head p{max-width:52ch; font-size:15.5px; color:rgba(32,32,27,0.7); margin:10px 0 0;}
+
+  /* Product catalog */
+  .catalog{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .product-card{
+    background:var(--cream);
+    padding:32px 28px;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .product-swatch{
+    width:100%; aspect-ratio:16/11; border-radius:3px;
+    position:relative;
+    display:flex; align-items:flex-end;
+  }
+  .product-swatch .fat-badge{
+    margin:14px; padding:6px 12px; border-radius:20px;
+    background:rgba(247,243,234,0.9); color:var(--ink);
+    font-size:12.5px; font-weight:600;
+  }
+  .p1{background:linear-gradient(135deg,#3B6350,#2C4A3B);}
+  .p2{background:linear-gradient(135deg,#D8B84A,#C9A227);}
+  .p3{background:linear-gradient(135deg,#E7E1D2,#CFC6AE);}
+  .p4{background:linear-gradient(135deg,#7C9A8C,#4E7061);}
+  .p5{background:linear-gradient(135deg,#EFCB68,#C9A227);}
+  .p6{background:linear-gradient(135deg,#B7C7A3,#8CA37E);}
+  .product-card h3{font-size:19px;}
+  .product-card p{margin:0; font-size:14.5px; color:rgba(32,32,27,0.7);}
+  .product-meta{
+    display:flex; gap:16px; margin-top:auto; padding-top:14px;
+    border-top:1px solid var(--line);
+    font-size:13px; color:rgba(32,32,27,0.6);
+  }
+  .product-meta span b{color:var(--ink); font-weight:600;}
+
+  /* Category divider */
+  .cat-label{
+    font-size:13px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--green); font-weight:600; margin-bottom:16px;
+  }
+
+  /* Quality strip */
+  .quality-strip{
+    background:var(--cream-dim);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .quality-strip .wrap{
+    padding:56px 32px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:32px;
+  }
+  .quality-item h4{
+    font-family:'Fraunces',serif; font-weight:500; font-size:19px; margin-bottom:8px;
+  }
+  .quality-item p{margin:0; font-size:14.5px; color:rgba(32,32,27,0.7);}
+
+  /* Footer */
+  footer{
+    background:var(--ink); color:var(--cream);
+    padding:64px 0 32px;
+  }
+  .foot-top{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:32px;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(247,243,234,0.15);
+  }
+  .foot-top h4{
+    font-size:13px; text-transform:none; color:var(--gold);
+    margin-bottom:16px; font-weight:500;
+  }
+  .foot-top a{
+    display:block; text-decoration:none; color:rgba(247,243,234,0.75);
+    font-size:14.5px; margin-bottom:10px;
+  }
+  .foot-bottom{
+    display:flex; justify-content:space-between; padding-top:24px;
+    font-size:13px; color:rgba(247,243,234,0.5);
+  }
+
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .catalog{grid-template-columns:1fr;}
+    .quality-strip .wrap{grid-template-columns:1fr; row-gap:28px;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Gaza"></a>
+    <nav class="navlinks">
+      <a href="index.html#conoce">Conoce Gaza</a>
+      <a href="index.html#ganaderos">Nuestros Ganaderos</a>
+      <a href="productos.html" class="active">Productos</a>
+      <a href="index.html#calidad">Calidad</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <a class="navcta" href="index.html#contacto">Tienda online</a>
+  </div>
+</header>
+
+<section class="page-hero wrap">
+  <div class="hero-eyebrow">Nuestra gama</div>
+  <h1>Toda la leche de Gaza, en un solo lugar.</h1>
+  <p>Leche fresca y de larga duración, siempre a partir de la misma materia prima: la leche de las más de 80 ganaderías de Zamora que forman nuestra cooperativa.</p>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="cat-label">Leche UHT</div>
+    <h2>La base de siempre, para el día a día</h2>
+    <p>Nuestras tres referencias clásicas, en formato de 1 litro, pensadas para toda la familia.</p>
+  </div>
+  <div class="catalog">
+    <div class="product-card">
+      <div class="product-swatch p1"><span class="fat-badge">3,6% M.G.</span></div>
+      <h3>Entera</h3>
+      <p>Sabor completo, tal y como sale de la granja. Rica en calcio y vitaminas A y D.</p>
+      <div class="product-meta">
+        <span>Formato: <b>1 L / 6x1 L</b></span>
+        <span>Conservación: <b>UHT</b></span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-swatch p2"><span class="fat-badge">1,5-1,8% M.G.</span></div>
+      <h3>Semidesnatada</h3>
+      <p>El equilibrio entre sabor y ligereza, para quien no quiere renunciar a nada.</p>
+      <div class="product-meta">
+        <span>Formato: <b>1 L / 6x1 L</b></span>
+        <span>Conservación: <b>UHT</b></span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-swatch p3"><span class="fat-badge">&lt;0,3% M.G.</span></div>
+      <h3>Desnatada</h3>
+      <p>Toda la calidad Gaza, con menos grasa. Ideal para un consumo diario más ligero.</p>
+      <div class="product-meta">
+        <span>Formato: <b>1 L / 6x1 L</b></span>
+        <span>Conservación: <b>UHT</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <div class="cat-label">Especialidades</div>
+    <h2>Gamas pensadas para cada necesidad</h2>
+    <p>Sin lactosa, enriquecida y para los más pequeños de la casa — la misma leche de Zamora, adaptada a cada mesa.</p>
+  </div>
+  <div class="catalog">
+    <div class="product-card">
+      <div class="product-swatch p4"><span class="fat-badge">Sin lactosa</span></div>
+      <h3>Sin Lactosa</h3>
+      <p>Leche semidesnatada con lactasa añadida, sin renunciar al sabor de siempre.</p>
+      <div class="product-meta">
+        <span>Formato: <b>1 L</b></span>
+        <span>Conservación: <b>UHT</b></span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-swatch p5"><span class="fat-badge">+ Calcio</span></div>
+      <h3>Enriquecida en Calcio</h3>
+      <p>Semidesnatada con un aporte extra de calcio y vitamina D para huesos fuertes.</p>
+      <div class="product-meta">
+        <span>Formato: <b>1 L</b></span>
+        <span>Conservación: <b>UHT</b></span>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-swatch p6"><span class="fat-badge">Crecimiento</span></div>
+      <h3>Gaza Junior</h3>
+      <p>Fórmula pensada para niños, con vitaminas y minerales para su desarrollo.</p>
+      <div class="product-meta">
+        <span>Formato: <b>1 L</b></span>
+        <span>Conservación: <b>UHT</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quality-strip">
+  <div class="wrap">
+    <div class="quality-item">
+      <h4>Origen 100% Zamora</h4>
+      <p>Toda nuestra leche procede de las más de 80 ganaderías propias de la cooperativa.</p>
+    </div>
+    <div class="quality-item">
+      <h4>Bienestar animal certificado</h4>
+      <p>Primeras granjas certificadas de España en bienestar animal desde 1998.</p>
+    </div>
+    <div class="quality-item">
+      <h4>Sello Tierra de Sabor</h4>
+      <p>Toda la gama cuenta con el sello de calidad de Castilla y León.</p>
+    </div>
+  </div>
+</div>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h4>Gaza</h4>
+        <p style="color:rgba(247,243,234,0.6); font-size:14px; max-width:32ch;">Leche de Castilla y León, producida por ganaderos de Zamora desde 1974.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <a href="index.html#ganaderos">Nuestros ganaderos</a>
+        <a href="productos.html">Productos</a>
+        <a href="index.html#calidad">Calidad Gaza</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:+34980534620">+34 980 534 620</a>
+        <a href="mailto:info@gaza.es">info@gaza.es</a>
+        <a href="#">Calle de Almaráz 1, Zamora</a>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#">Comprar online</a>
+        <a href="#">Condiciones de compra</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Leche Gaza</span>
+      <span>Aviso legal y privacidad</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

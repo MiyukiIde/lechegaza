@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leche Gaza — Ganaderos de Zamora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F3EA;
+    --cream-dim:#EFE9DC;
+    --green:#2C4A3B;
+    --green-deep:#1B322A;
+    --gold:#C9A227;
+    --ink:#20201B;
+    --line: rgba(32,32,27,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,243,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    display:flex; align-items:center;
+    text-decoration:none;
+  }
+  .brand img{height:34px; width:auto; display:block;}
+  .navlinks{
+    display:flex; gap:32px; font-size:14.5px;
+  }
+  .navlinks a{text-decoration:none; color:var(--ink); opacity:0.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;}
+  .navcta{
+    background:var(--green); color:var(--cream);
+    padding:10px 20px; border-radius:3px;
+    font-size:14px; text-decoration:none;
+    font-weight:500;
+  }
+
+  /* Hero */
+  .hero{
+    padding:96px 0 72px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:end;
+  }
+  .hero-eyebrow{
+    font-size:15px; color:var(--green); font-weight:500; margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5vw, 64px);
+    line-height:1.05;
+    max-width:11ch;
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:17px;
+    max-width:44ch;
+    color:rgba(32,32,27,0.78);
+  }
+  .hero-actions{
+    margin-top:32px;
+    display:flex; gap:14px; align-items:center;
+  }
+  .btn-primary{
+    background:var(--ink); color:var(--cream);
+    padding:14px 26px; border-radius:3px;
+    text-decoration:none; font-size:15px; font-weight:500;
+  }
+  .btn-ghost{
+    text-decoration:none; color:var(--ink); font-size:15px;
+    border-bottom:1px solid var(--ink); padding-bottom:2px;
+  }
+  .hero-art{
+    aspect-ratio:4/5;
+    border-radius:4px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(201,162,39,0.35), transparent 55%),
+      linear-gradient(160deg, var(--green) 0%, var(--green-deep) 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-art::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(247,243,234,0.06) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(90deg, rgba(247,243,234,0.06) 0 1px, transparent 1px 40px);
+  }
+  .hero-art-label{
+    position:absolute; left:24px; bottom:24px;
+    color:var(--cream);
+    font-family:'Fraunces',serif; font-size:15px;
+  }
+  .hero-art-label small{display:block; opacity:0.65; font-family:'Inter',sans-serif; font-size:12.5px; margin-top:4px;}
+
+  /* Stat band */
+  .stats{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--cream-dim);
+  }
+  .stats .wrap{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    padding:36px 32px;
+  }
+  .stat{
+    padding:0 24px;
+    border-left:1px solid var(--line);
+  }
+  .stat:first-child{border-left:none; padding-left:0;}
+  .stat b{
+    font-family:'Fraunces',serif;
+    font-size:34px; font-weight:500; display:block; color:var(--green);
+  }
+  .stat span{font-size:13.5px; color:rgba(32,32,27,0.7);}
+
+  /* Section titles */
+  .section{padding:96px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:48px; gap:24px;
+  }
+  .section-head h2{font-size:clamp(28px,3vw,38px); max-width:16ch;}
+  .section-head p{max-width:36ch; font-size:15.5px; color:rgba(32,32,27,0.7); margin:0;}
+
+  /* Products */
+  .products{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .product{
+    background:var(--cream);
+    padding:36px 28px;
+    display:flex; flex-direction:column; gap:16px;
+  }
+  .product-swatch{
+    width:100%; aspect-ratio:16/10; border-radius:3px;
+  }
+  .p1{background:linear-gradient(135deg,#3B6350,#2C4A3B);}
+  .p2{background:linear-gradient(135deg,#D8B84A,#C9A227);}
+  .p3{background:linear-gradient(135deg,#E7E1D2,#CFC6AE);}
+  .product h3{font-size:19px;}
+  .product p{margin:0; font-size:14.5px; color:rgba(32,32,27,0.7);}
+
+  /* Story / timeline */
+  .story{
+    background:var(--green-deep);
+    color:var(--cream);
+  }
+  .story .section-head h2, .story .section-head p{color:var(--cream);}
+  .story .section-head p{color:rgba(247,243,234,0.65);}
+  .timeline{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:32px;
+  }
+  .tl-item{
+    border-top:1px solid rgba(247,243,234,0.25);
+    padding-top:20px;
+  }
+  .tl-year{font-family:'Fraunces',serif; font-size:22px; color:var(--gold); margin-bottom:10px;}
+  .tl-item p{margin:0; font-size:14.5px; color:rgba(247,243,234,0.78);}
+
+  /* Quote */
+  .quote{
+    padding:100px 0;
+    text-align:center;
+  }
+  .quote blockquote{
+    font-family:'Fraunces',serif;
+    font-size:clamp(24px,3vw,32px);
+    max-width:22ch;
+    margin:0 auto;
+    line-height:1.4;
+  }
+  .quote cite{
+    display:block; margin-top:24px; font-style:normal;
+    font-size:14.5px; color:rgba(32,32,27,0.65);
+  }
+
+  /* Footer */
+  footer{
+    background:var(--ink); color:var(--cream);
+    padding:64px 0 32px;
+  }
+  .foot-top{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr;
+    gap:32px;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(247,243,234,0.15);
+  }
+  .foot-top h4{
+    font-size:13px; text-transform:none; color:var(--gold);
+    margin-bottom:16px; font-weight:500;
+  }
+  .foot-top a{
+    display:block; text-decoration:none; color:rgba(247,243,234,0.75);
+    font-size:14.5px; margin-bottom:10px;
+  }
+  .foot-bottom{
+    display:flex; justify-content:space-between; padding-top:24px;
+    font-size:13px; color:rgba(247,243,234,0.5);
+  }
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;}
+    .navlinks{display:none;}
+    .stats .wrap{grid-template-columns:repeat(2,1fr); row-gap:24px;}
+    .stat{border-left:none; padding-left:0;}
+    .products{grid-template-columns:1fr;}
+    .timeline{grid-template-columns:repeat(2,1fr); row-gap:28px;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Gaza"></a>
+    <nav class="navlinks">
+      <a href="#conoce">Conoce Gaza</a>
+      <a href="#ganaderos">Nuestros Ganaderos</a>
+      <a href="productos.html">Productos</a>
+      <a href="#calidad">Calidad</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="navcta" href="#contacto">Tienda online</a>
+  </div>
+</header>
+
+<section class="hero wrap" id="conoce">
+  <div>
+    <div class="hero-eyebrow">Zamora, Castilla y León</div>
+    <h1>Leche con nombre de familia.</h1>
+    <p class="hero-sub">Desde 1974, más de 80 ganaderías de Zamora producen la leche que llevamos a tu mesa. Sin intermediarios entre el campo y el envase.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#ganaderos">Conoce a los ganaderos</a>
+      <a class="btn-ghost" href="#productos">Ver productos</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <div class="hero-art-label">Dehesa de Zamora
+      <small>80+ ganaderías propias</small>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>50+</b><span>años de historia</span></div>
+    <div class="stat"><b>80+</b><span>ganaderías propias</span></div>
+    <div class="stat"><b>1ª</b><span>certificación en granja de España</span></div>
+    <div class="stat"><b>100%</b><span>leche de Castilla y León</span></div>
+  </div>
+</div>
+
+<section class="section wrap" id="productos">
+  <div class="section-head">
+    <h2>Tres formas de la misma leche</h2>
+    <p>Entera, semidesnatada y desnatada — el mismo origen, la misma exigencia de calidad en cada botella.<br><a class="btn-ghost" style="display:inline-block; margin-top:14px;" href="productos.html">Ver todos los productos</a></p>
+  </div>
+  <div class="products">
+    <div class="product">
+      <div class="product-swatch p1"></div>
+      <h3>Entera</h3>
+      <p>Sabor completo, tal y como sale de la granja.</p>
+    </div>
+    <div class="product">
+      <div class="product-swatch p2"></div>
+      <h3>Semidesnatada</h3>
+      <p>El equilibrio entre sabor y ligereza.</p>
+    </div>
+    <div class="product">
+      <div class="product-swatch p3"></div>
+      <h3>Desnatada</h3>
+      <p>Toda la calidad Gaza, con menos grasa.</p>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="ganaderos">
+  <div class="section wrap">
+    <div class="section-head">
+      <h2>Medio siglo en el campo</h2>
+      <p>De una cooperativa local a un referente de calidad en el sector lácteo español.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">1974</div>
+        <p>Un grupo de ganaderos de Zamora se une para vender su leche juntos.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1998</div>
+        <p>Primeras granjas certificadas de España en bienestar animal.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2015</div>
+        <p>Sello de calidad Tierra de Sabor en toda la gama de producto.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Hoy</div>
+        <p>Más de 80 ganaderías propias y presencia en toda España.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote wrap" id="calidad">
+  <blockquote>"No vendemos leche. Vendemos el trabajo de cincuenta años de nuestras familias."</blockquote>
+  <cite>— Ganadero de la cooperativa, Zamora</cite>
+</section>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h4>Gaza</h4>
+        <p style="color:rgba(247,243,234,0.6); font-size:14px; max-width:32ch;">Leche de Castilla y León, producida por ganaderos de Zamora desde 1974.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <a href="#ganaderos">Nuestros ganaderos</a>
+        <a href="productos.html">Productos</a>
+        <a href="#calidad">Calidad Gaza</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:+34980534620">+34 980 534 620</a>
+        <a href="mailto:info@gaza.es">info@gaza.es</a>
+        <a href="#">Calle de Almaráz 1, Zamora</a>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#">Comprar online</a>
+        <a href="#">Condiciones de compra</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Leche Gaza</span>
+      <span>Aviso legal y privacidad</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
