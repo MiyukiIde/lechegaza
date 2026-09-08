@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recetas — Leche Gaza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F3EA;
+    --cream-dim:#EFE9DC;
+    --green:#2C4A3B;
+    --green-deep:#1B322A;
+    --gold:#C9A227;
+    --ink:#20201B;
+    --line: rgba(32,32,27,0.12);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,243,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{display:flex; align-items:center; text-decoration:none;}
+  .brand img{height:34px; width:auto; display:block;}
+  .navlinks{display:flex; gap:32px; font-size:14.5px;}
+  .navlinks a{text-decoration:none; color:var(--ink); opacity:0.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;}
+  .navlinks a.active{opacity:1; color:var(--green); font-weight:500;}
+  .navcta{
+    background:var(--green); color:var(--cream);
+    padding:10px 20px; border-radius:3px;
+    font-size:14px; text-decoration:none; font-weight:500;
+  }
+
+  /* Intro */
+  .intro{padding:72px 0 16px;}
+  .hero-eyebrow{font-size:15px; color:var(--green); font-weight:500; margin-bottom:18px;}
+  .intro h1{font-size:clamp(32px, 4.2vw, 50px); line-height:1.05; max-width:16ch;}
+  .intro p{margin-top:18px; font-size:16.5px; max-width:58ch; color:rgba(32,32,27,0.75);}
+
+  /* Recipe card */
+  .recipes{padding:48px 0 96px;}
+  .recipe-card{
+    display:grid; grid-template-columns:1.15fr 1fr;
+    border:1px solid var(--line); background:var(--cream-dim);
+  }
+  .recipe-video{
+    position:relative; aspect-ratio:16/9; background:#111;
+  }
+  .recipe-video iframe{
+    position:absolute; inset:0; width:100%; height:100%; border:0;
+  }
+  .recipe-body{
+    padding:44px 40px; display:flex; flex-direction:column; gap:16px; justify-content:center;
+  }
+  .recipe-tag{
+    align-self:flex-start;
+    background:var(--green); color:var(--cream);
+    font-size:12.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    padding:8px 16px; clip-path:polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+  }
+  .recipe-body h2{font-size:clamp(24px,2.6vw,32px); line-height:1.15;}
+  .recipe-body .subtitle{font-size:15px; color:rgba(32,32,27,0.6);}
+  .recipe-body .desc{font-size:15px; color:rgba(32,32,27,0.72); margin:0;}
+  .recipe-meta{display:flex; gap:24px; margin-top:8px; font-size:13px; color:rgba(32,32,27,0.6);}
+  .recipe-meta span b{display:block; color:var(--ink); font-family:'Fraunces',serif; font-size:17px; font-weight:500;}
+
+  .coming-soon{
+    margin-top:32px; padding:28px 32px; border:1px dashed var(--line);
+    font-size:14.5px; color:rgba(32,32,27,0.6);
+  }
+
+  /* Footer */
+  footer{background:var(--ink); color:var(--cream); padding:64px 0 32px;}
+  .foot-top{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; padding-bottom:48px; border-bottom:1px solid rgba(247,243,234,0.15);}
+  .foot-top h4{font-size:13px; text-transform:none; color:var(--gold); margin-bottom:16px; font-weight:500;}
+  .foot-top a{display:block; text-decoration:none; color:rgba(247,243,234,0.75); font-size:14.5px; margin-bottom:10px;}
+  .foot-bottom{display:flex; justify-content:space-between; padding-top:24px; font-size:13px; color:rgba(247,243,234,0.5);}
+
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .recipe-card{grid-template-columns:1fr;}
+    .recipe-body{padding:32px 28px;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Gaza"></a>
+    <nav class="navlinks">
+      <a href="index.html#conoce">Conoce Gaza</a>
+      <a href="index.html#ganaderos">Nuestros Ganaderos</a>
+      <a href="productos.html">Productos</a>
+      <a href="aula-lactea.html">Aula Láctea</a>
+      <a href="index.html#calidad">Calidad</a>
+      <a href="recetas.html" class="active">Recetas</a>
+    </nav>
+    <a class="navcta" href="index.html#contacto">Tienda online</a>
+  </div>
+</header>
+
+<section class="intro wrap">
+  <div class="hero-eyebrow">Cocina con Gaza</div>
+  <h1>Recetas con nuestra leche</h1>
+  <p>Ideas y vídeos para disfrutar de la leche Gaza en la cocina de casa, desde postres tradicionales hasta recetas pensadas para toda la familia.</p>
+</section>
+
+<section class="recipes wrap">
+  <div class="recipe-card">
+    <div class="recipe-video">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/NQM9at4LpGo"
+        title="Tarta de Leche de Oveja Gaza"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </div>
+    <div class="recipe-body">
+      <span class="recipe-tag">Receta</span>
+      <h2>Tarta elaborada con Leche de Oveja Gaza</h2>
+      <div class="subtitle">Tarta con Leche de Oveja</div>
+      <p class="desc">Sigue el vídeo paso a paso de Ganaderías de Zamora para preparar esta tarta casera con leche de oveja Gaza, desde la masa hasta el relleno.</p>
+      <div class="recipe-meta">
+        <span><b>Video</b>Paso a paso</span>
+        <span><b>Ganaderías de Zamora</b>Canal oficial</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="coming-soon">Muy pronto añadiremos más recetas con leche Gaza. ¿Tienes una receta favorita? Escríbenos a <a href="mailto:info@gaza.es" style="text-decoration:underline;">info@gaza.es</a>.</div>
+</section>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h4>Gaza</h4>
+        <p style="color:rgba(247,243,234,0.6); font-size:14px; max-width:32ch;">Leche de Castilla y León, producida por ganaderos de Zamora desde 1974.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <a href="index.html#ganaderos">Nuestros ganaderos</a>
+        <a href="productos.html">Productos</a>
+        <a href="aula-lactea.html">Aula Láctea</a>
+        <a href="index.html#calidad">Calidad Gaza</a>
+        <a href="recetas.html">Recetas</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:+34980534620">+34 980 534 620</a>
+        <a href="mailto:info@gaza.es">info@gaza.es</a>
+        <a href="#">Calle de Almaráz 1, Zamora</a>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#">Comprar online</a>
+        <a href="#">Condiciones de compra</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Leche Gaza</span>
+      <span>Aviso legal y privacidad</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

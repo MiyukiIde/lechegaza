@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula Láctea — Leche Gaza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7F3EA;
+    --cream-dim:#EFE9DC;
+    --green:#2C4A3B;
+    --green-deep:#1B322A;
+    --gold:#C9A227;
+    --ink:#20201B;
+    --line: rgba(32,32,27,0.12);
+    --al-green:#8CBF3F;
+    --al-navy:#1B3A63;
+    --al-maroon:#8E1B3C;
+    --al-purple:#A78BDD;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(247,243,234,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{display:flex; align-items:center; text-decoration:none;}
+  .brand img{height:34px; width:auto; display:block;}
+  .navlinks{display:flex; gap:32px; font-size:14.5px;}
+  .navlinks a{text-decoration:none; color:var(--ink); opacity:0.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;}
+  .navlinks a.active{opacity:1; color:var(--green); font-weight:500;}
+  .navcta{
+    background:var(--green); color:var(--cream);
+    padding:10px 20px; border-radius:3px;
+    font-size:14px; text-decoration:none; font-weight:500;
+  }
+
+  /* Intro */
+  .intro{padding:72px 0 16px;}
+  .hero-eyebrow{font-size:15px; color:var(--green); font-weight:500; margin-bottom:18px;}
+  .intro h1{font-size:clamp(32px, 4.2vw, 50px); line-height:1.05; max-width:16ch;}
+  .intro p{margin-top:18px; font-size:16.5px; max-width:58ch; color:rgba(32,32,27,0.75);}
+
+  /* Showcase: icons + mascot */
+  .showcase{
+    display:grid; grid-template-columns:1fr 1.05fr 1fr; gap:28px;
+    align-items:center; padding:56px 0 88px;
+  }
+  .feature-col{display:flex; flex-direction:column; gap:46px;}
+  .feature-item{display:flex; gap:16px; align-items:flex-start;}
+  .feature-item.right{flex-direction:row-reverse; text-align:right;}
+  .feature-icon{
+    width:58px; height:58px; border-radius:50%; flex-shrink:0;
+    border:2px solid var(--fc,var(--green)); color:var(--fc,var(--green));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .feature-icon svg{width:24px; height:24px;}
+  .feature-item h3{
+    font-family:'Inter',sans-serif; font-size:14.5px; font-weight:600;
+    letter-spacing:0.02em; margin:0 0 6px;
+  }
+  .feature-item p{margin:0; font-size:14px; color:rgba(32,32,27,0.68);}
+  .cow-wrap{display:flex; justify-content:center; align-items:center;}
+  .cow-wrap svg{width:100%; max-width:220px; height:auto;}
+
+  /* Valor + video */
+  .valor-section{padding:0 0 96px; display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start;}
+  .valor-card{border:1px solid var(--line); border-left:4px solid var(--al-green); background:var(--cream-dim);}
+  .valor-card summary{
+    list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center;
+    padding:22px 26px; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+    color:rgba(32,32,27,0.6); font-weight:600;
+  }
+  .valor-card summary::-webkit-details-marker{display:none;}
+  .valor-card summary::after{content:'+'; font-size:22px; line-height:1; color:rgba(32,32,27,0.35);}
+  .valor-card[open] summary::after{content:'\2212';}
+  .valor-body{padding:0 26px 30px; display:flex; flex-direction:column; gap:16px;}
+  .valor-body p{margin:0; font-size:15px; color:rgba(32,32,27,0.75);}
+
+  .video-card{
+    position:relative; aspect-ratio:16/11; overflow:hidden;
+    background:linear-gradient(180deg,#8D8E7C,#82836F);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+    padding:20px;
+  }
+  .video-illustration{width:62%; max-width:220px;}
+  .play-btn{
+    width:60px; height:60px; border-radius:50%; border:2px solid rgba(247,243,234,0.9);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .play-btn svg{width:20px; height:20px; fill:var(--cream); margin-left:3px;}
+  .video-label{color:var(--cream); font-size:13px; letter-spacing:0.12em; font-weight:600;}
+  .video-wordmark{
+    text-align:center; margin-top:14px; font-family:'Fraunces',serif; font-weight:600;
+    font-size:24px; color:var(--al-navy);
+  }
+
+  /* Footer */
+  footer{background:var(--ink); color:var(--cream); padding:64px 0 32px;}
+  .foot-top{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; padding-bottom:48px; border-bottom:1px solid rgba(247,243,234,0.15);}
+  .foot-top h4{font-size:13px; text-transform:none; color:var(--gold); margin-bottom:16px; font-weight:500;}
+  .foot-top a{display:block; text-decoration:none; color:rgba(247,243,234,0.75); font-size:14.5px; margin-bottom:10px;}
+  .foot-bottom{display:flex; justify-content:space-between; padding-top:24px; font-size:13px; color:rgba(247,243,234,0.5);}
+
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .showcase{grid-template-columns:1fr; gap:36px;}
+    .cow-wrap{order:-1;}
+    .feature-item.right{flex-direction:row; text-align:left;}
+    .valor-section{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Gaza"></a>
+    <nav class="navlinks">
+      <a href="index.html#conoce">Conoce Gaza</a>
+      <a href="index.html#ganaderos">Nuestros Ganaderos</a>
+      <a href="productos.html">Productos</a>
+      <a href="aula-lactea.html" class="active">Aula Láctea</a>
+      <a href="index.html#calidad">Calidad</a>
+      <a href="recetas.html">Recetas</a>
+    </nav>
+    <a class="navcta" href="#contacto">Tienda online</a>
+  </div>
+</header>
+
+<section class="intro wrap">
+  <div class="hero-eyebrow">Educación y familia</div>
+  <h1>Aula Láctea</h1>
+  <p>Un espacio educativo de Gaza en el que los más pequeños descubren, tocan y aprenden de dónde viene la leche: de la granja a la fábrica, pasando por la propia vaca.</p>
+</section>
+
+<section class="showcase wrap">
+  <div class="feature-col">
+    <div class="feature-item" style="--fc:var(--al-green)">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="16" rx="2"/>
+          <circle cx="8.5" cy="9.5" r="1.5"/>
+          <path d="M21 15l-5-5-4 4-3-3-6 6"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Espacio Expositivo</h3>
+        <p>Todo se puede tocar y experimentar, aprenderemos a través de la propia experiencia. Esta es una Aula viva.</p>
+      </div>
+    </div>
+    <div class="feature-item" style="--fc:var(--al-navy)">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <rect x="6.2" y="10" width="4.6" height="2.6" rx="1"/>
+          <rect x="13.2" y="10" width="4.6" height="2.6" rx="1"/>
+          <path d="M10.8 11.3h2.4"/>
+          <path d="M9 15.5c1.3 1.2 4.7 1.2 6 0"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Paseo por la granja</h3>
+        <p>Descubriremos como es una granja GAZA por dentro, que labores se realizan en ella, quien hay dentro de la misma, como se cuida de las vacas...</p>
+      </div>
+    </div>
+    <div class="feature-item" style="--fc:var(--al-maroon)">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v2.2"/>
+          <path d="M6 15c0-4.4 2-7.4 6-7.4s6 3 6 7.4l1.6 3.2H4.4z"/>
+          <path d="M10 18.2a2 2 0 0 0 4 0"/>
+        </svg>
+      </div>
+      <div>
+        <h3>La vaca</h3>
+        <p>La vaca es la verdadera y gran productora de la leche, por ello estudiaremos como es su hábitat en la granja, como se desarrolla, como vive, como es su proceso digestivo y como elabora la leche.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cow-wrap">
+    <svg viewBox="0 0 220 300" role="img" aria-label="Mascota vaca de Aula Láctea">
+      <path d="M82 34 C68 8 44 6 42 24 C40 40 58 48 80 42Z" fill="#C99A4B" stroke="#161616" stroke-width="3"/>
+      <path d="M138 34 C152 8 176 6 178 24 C180 40 162 48 140 42Z" fill="#C99A4B" stroke="#161616" stroke-width="3"/>
+      <ellipse cx="110" cy="80" rx="62" ry="55" fill="#fff" stroke="#161616" stroke-width="4"/>
+      <path d="M150 45 C172 55 172 90 150 100 C130 108 122 78 134 58 C140 48 146 44 150 45Z" fill="#161616"/>
+      <path d="M60 40 C48 46 46 62 58 66 C68 69 72 54 66 45 C64 41 62 39 60 40Z" fill="#161616"/>
+      <circle cx="88" cy="72" r="14" fill="#fff" stroke="#161616" stroke-width="3"/>
+      <circle cx="92" cy="74" r="6" fill="#161616"/>
+      <circle cx="134" cy="72" r="14" fill="#fff" stroke="#161616" stroke-width="3"/>
+      <circle cx="130" cy="74" r="6" fill="#161616"/>
+      <ellipse cx="110" cy="112" rx="40" ry="26" fill="#F0AFAE" stroke="#161616" stroke-width="3"/>
+      <circle cx="98" cy="112" r="5" fill="#B5595A"/>
+      <circle cx="122" cy="112" r="5" fill="#B5595A"/>
+      <path d="M100 128 Q110 134 120 128" stroke="#161616" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M72 142 Q110 160 148 142 L140 168 Q110 180 80 168Z" fill="#2E5FA3" stroke="#161616" stroke-width="3"/>
+      <path d="M100 164 L120 164 L114 186 L106 186Z" fill="#D9A62B" stroke="#161616" stroke-width="2.5"/>
+      <circle cx="110" cy="188" r="5" fill="#8a6a12"/>
+      <path d="M62 150 C50 165 45 200 55 235 C65 270 155 270 165 235 C175 200 170 165 158 150 C140 138 80 138 62 150Z" fill="#fff" stroke="#161616" stroke-width="4"/>
+      <circle cx="118" cy="205" r="20" fill="#161616"/>
+      <path d="M68 168 C58 178 60 195 74 198 C86 200 90 182 78 172 C75 169 71 167 68 168Z" fill="#161616"/>
+      <path d="M150 225 C160 232 158 248 144 250 C132 251 130 236 140 228 C143 226 147 224 150 225Z" fill="#161616"/>
+      <rect x="45" y="170" width="60" height="26" rx="13" fill="#fff" stroke="#161616" stroke-width="4" transform="rotate(-52 60 183)"/>
+      <rect x="18" y="158" width="30" height="46" rx="4" fill="#fff" stroke="#161616" stroke-width="3"/>
+      <rect x="21" y="170" width="24" height="32" fill="#F2F2ED"/>
+      <rect x="115" y="170" width="60" height="26" rx="13" fill="#fff" stroke="#161616" stroke-width="4" transform="rotate(52 160 183)"/>
+      <ellipse cx="180" cy="192" rx="15" ry="18" fill="#fff" stroke="#161616" stroke-width="3"/>
+      <rect x="72" y="248" width="26" height="34" rx="9" fill="#fff" stroke="#161616" stroke-width="3.5"/>
+      <rect x="122" y="248" width="26" height="34" rx="9" fill="#fff" stroke="#161616" stroke-width="3.5"/>
+      <ellipse cx="85" cy="286" rx="20" ry="11" fill="#161616"/>
+      <ellipse cx="135" cy="286" rx="20" ry="11" fill="#161616"/>
+    </svg>
+  </div>
+
+  <div class="feature-col">
+    <div class="feature-item right" style="--fc:var(--al-purple)">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+          <rect x="4" y="4" width="7" height="7" fill="none"/>
+          <rect x="13" y="4" width="7" height="7" fill="currentColor" stroke="none"/>
+          <rect x="4" y="13" width="7" height="7" fill="currentColor" stroke="none"/>
+          <rect x="13" y="13" width="7" height="7" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <h3>La Pirámide Nutricional</h3>
+        <p>Aprenderemos como es la dieta y los hábitos saludables. La leche está presente en muchos más aspectos que solo en un vaso: Recetas de platos realizados con leche.</p>
+      </div>
+    </div>
+    <div class="feature-item right" style="--fc:var(--al-maroon)">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="10" width="16" height="10" rx="1"/>
+          <path d="M9 10V7a3 3 0 0 1 6 0v3"/>
+          <path d="M12 13v4M10 15l2-2 2 2"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Reciclado de envases</h3>
+        <p>Talleres y manualidades con envases de Gaza reciclados. Realizaremos una práctica con diferentes envases, para descubrir el color del contenedor al que va destinado.</p>
+      </div>
+    </div>
+    <div class="feature-item right" style="--fc:var(--al-navy)">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 11 12 4l8 7"/>
+          <path d="M6 10v9h12v-9"/>
+          <path d="M10 19v-5h4v5"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Visita a la fábrica</h3>
+        <p>Al finalizar todas las explicaciones dentro del Aula Láctea, los visitantes se ponen la bata y el gorro correspondiente para comenzar la visita a la fábrica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="valor-section wrap">
+  <details class="valor-card" open>
+    <summary>Valor</summary>
+    <div class="valor-body">
+      <p>El aula láctea Gaza es un espacio educativo único en España en el que el alumno conocerá de primera mano como es el proceso de la leche, desde la granja hasta la mesa, pasando por el envasado.</p>
+      <p>Un proyecto de visitas interactivas para que tanto niños como grandes conozcan el proceso de la leche, aprendiendo a valorar todo el trabajo realizado desde la granja, el campo y la fábrica. Los visitantes conocerán de primera mano como son las granjas Gaza, el proceso de fabricación, la alimentación de las vacas... También sabrán como es una alimentación sana y cómo debemos reciclar.</p>
+    </div>
+  </details>
+
+  <div>
+    <div class="video-card">
+      <svg class="video-illustration" viewBox="0 0 200 160" role="img" aria-label="Ilustración Aula Láctea">
+        <circle cx="100" cy="55" r="40" fill="#D9B23B"/>
+        <path d="M40 90 L100 40 L160 90" stroke="#1B2A52" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="55" y="70" width="14" height="55" fill="#1B2A52"/>
+        <rect x="131" y="70" width="14" height="55" fill="#1B2A52"/>
+        <path d="M20 118 Q60 100 100 116 T180 108" stroke="#B4223A" stroke-width="13" fill="none" stroke-linecap="round"/>
+        <path d="M15 130 Q60 112 105 128 T185 120" stroke="#1F4438" stroke-width="13" fill="none" stroke-linecap="round"/>
+        <path d="M15 142 Q65 124 110 140 T190 132" stroke="#6FAE3A" stroke-width="13" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg>
+      </div>
+      <div class="video-label">VIDEO</div>
+    </div>
+    <div class="video-wordmark">aulaláctea</div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h4>Gaza</h4>
+        <p style="color:rgba(247,243,234,0.6); font-size:14px; max-width:32ch;">Leche de Castilla y León, producida por ganaderos de Zamora desde 1974.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <a href="index.html#ganaderos">Nuestros ganaderos</a>
+        <a href="productos.html">Productos</a>
+        <a href="aula-lactea.html">Aula Láctea</a>
+        <a href="index.html#calidad">Calidad Gaza</a>
+        <a href="recetas.html">Recetas</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:+34980534620">+34 980 534 620</a>
+        <a href="mailto:info@gaza.es">info@gaza.es</a>
+        <a href="#">Calle de Almaráz 1, Zamora</a>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#">Comprar online</a>
+        <a href="#">Condiciones de compra</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Leche Gaza</span>
+      <span>Aviso legal y privacidad</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
